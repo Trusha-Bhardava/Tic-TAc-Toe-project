@@ -20,21 +20,29 @@ const winnerpatterns = [
 
 const resetgame = () =>
 {
+    // Start game with O's turn
     turn0 = true;
+    // Clear board and enable boxes
     enable();
+     // Hide winner message
     msgcontainer.classList.add("hide");
 }
+
+// add event listner on each button
 boxes.forEach((box) => {
-    box.addEventListener("click", () => {
+    box.addEventListener("click", () =>
+    {
      if(turn0 === true)
      {
         box.innerText = "0";
+        // set false so next time not true when we click
         turn0 = false;
      }
      else{
         box.innerText= "x";
         turn0 = true;
      }
+     // disable so 2nd time not change value stay it is
      box.disabled = true;
 
      checkwinner();
@@ -54,7 +62,9 @@ const enable = () =>
 {
     for (let box of boxes)
     {
+         // Allow clicking again
         box.disabled = true;
+           // Remove old O or X
         box.innerHTML = "";
     }
 }
@@ -62,27 +72,37 @@ const enable = () =>
 
 const showWinner = (winner) => {
     msg.innerText = (`congratulation, winner is ${winner}`);
+     // Remove hide class so message becomes visible
     msgcontainer.classList.remove("hide");
+     // Stop players from clicking more boxes   
     disable();
 }
 
 
-const checkwinner=() => {
+const checkwinner = () => {
+     // Check every winning pattern one by one
     for (pattern of winnerpatterns)
     {
+        // get value thst store in each buttton
          let pos1Val = boxes[pattern[0]].innerText;
          let pos2Val = boxes[pattern[1]].innerText;
          let pos3Val = boxes[pattern[2]].innerText;
 
-    if (pos1Val !== "" && pos2Val !== "" && pos3Val !== "") {
-      if (pos1Val === pos2Val && pos2Val === pos3Val) {
-      
-
+     // first we check buttons are not empty    
+    if (pos1Val !== "" && pos2Val !== "" && pos3Val !== "") 
+    {
+      // check all 3 button has same value  
+      if (pos1Val === pos2Val && pos2Val === pos3Val) 
+        {
         showWinner(pos1Val);
-    }
+        }
 }
     }
 }
 
+// When New Game button is clicked
+// reset the complete game
 newgamebtn.addEventListener("click", resetgame);
+// When Reset button is clicked
+// reset the complete game
 resetbtn.addEventListener("click", resetgame);

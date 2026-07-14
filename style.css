@@ -16,17 +16,18 @@ body
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 5px;
 }
 
 .game
 {
-  height: 60vmin;
+  height: 50vmin;
   width: 60vmin;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 5px
+  gap: 5px;
 }
 
 .box
@@ -39,6 +40,7 @@ body
     font-size: 60px;
     color: red;
     background-color: purple;
+    margin: 6px;
 }
 
 .reset-btn
