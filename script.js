@@ -73,7 +73,6 @@ const enable = () =>
     }
 }
 
-
 const showWinner = (winner) => {
     msg.innerText = (`congratulation, winner is ${winner}`);
 
@@ -105,7 +104,7 @@ const checkwinner = () => {
     }
 }
 
-// When New Game button is clicked
+// When the New Game button is clicked
 // reset the complete game
 newgamebtn.addEventListener("click", resetgame);
 // When Reset button is clicked
